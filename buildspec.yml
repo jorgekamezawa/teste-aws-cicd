@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+  pre_build:
+    commands:
+      - echo Starting pre_build phase...
+      - chmod +x gradlew
+  build:
+    commands:
+      - echo Build started on `date`
+      - ./gradlew clean build
+  post_build:
+    commands:
+      - echo Build completed on `date`
+artifacts:
+  files:
+    - '*-0.0.1-SNAPSHOT.jar'
+  base-directory: 'build/libs'
