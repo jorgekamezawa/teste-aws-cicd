@@ -7,6 +7,6 @@ import org.springframework.stereotype.Service;
 public class HelloWorldService {
 
     public HelloWorld getHelloWorld() {
-        return new HelloWorld("Hello", "New World 1");
+        return new HelloWorld("Hello", "New World 2");
     }
 }

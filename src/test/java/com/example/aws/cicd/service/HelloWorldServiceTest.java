@@ -17,7 +17,7 @@ class HelloWorldServiceTest {
     @Test
     void testGetHelloWorld() {
         // Given
-        HelloWorld expectedHelloWorld = new HelloWorld("Hello", "New World 1");
+        HelloWorld expectedHelloWorld = new HelloWorld("Hello", "New World 2");
 
         // When
         HelloWorld actualHelloWorld = service.getHelloWorld();
