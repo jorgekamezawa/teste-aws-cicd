@@ -1,5 +1,6 @@
 package com.example.aws.cicd.controller;
 
+import com.example.aws.cicd.model.Container;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -23,12 +24,16 @@ public class ContainerController {
     }
 
     @GetMapping
-    public List<String> getContainers() {
-        return ecsClient.listTasks(ListTasksRequest.builder().build())
-                .taskArns()
-                .stream()
-                .map(this::describeTask)
-                .collect(Collectors.toList());
+    public Container getContainers() {
+        try {
+            return new Container(ecsClient.listTasks(ListTasksRequest.builder().build())
+                    .taskArns()
+                    .stream()
+                    .map(this::describeTask)
+                    .collect(Collectors.toList()));
+        } catch (Exception ex) {
+            return new Container(List.of(ex.getMessage()));
+        }
     }
 
     private String describeTask(String taskArn) {
