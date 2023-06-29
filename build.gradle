@@ -26,6 +26,9 @@ dependencies {
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	implementation 'software.amazon.awssdk:ecs:2.20.94'
+
 }
 
 tasks.named('test') {
